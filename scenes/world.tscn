@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dprytlu7hkt8h"]
+
+[ext_resource type="PackedScene" uid="uid://bwdkyy215mxdm" path="res://scenes/objects/donut.tscn" id="1_hlu0t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftj6j"]
+sky_top_color = Color(0, 0.831373, 0.870588, 1)
+sky_horizon_color = Color(0.67451, 0.647059, 0.662745, 1)
+
+[sub_resource type="Sky" id="Sky_le1fw"]
+sky_material = SubResource("ProceduralSkyMaterial_ftj6j")
+process_mode = 2
+
+[sub_resource type="Environment" id="Environment_1w65p"]
+background_mode = 2
+sky = SubResource("Sky_le1fw")
+ambient_light_source = 3
+ambient_light_color = Color(0.654902, 0.898039, 0.964706, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.998001, 0.0424378, 0.0468204, -0.0631911, 0.670236, 0.739453, 0, -0.740934, 0.671578, 0, 9.54928, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1w65p")
+
+[node name="donut" parent="." instance=ExtResource("1_hlu0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.177778, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.947025, -0.321158, 0, 0.321158, 0.947025, 0, 0, 0.516209)
